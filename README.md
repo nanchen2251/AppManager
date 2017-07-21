@@ -1,7 +1,7 @@
 # AppManager
 An elegant exit application and restart mechanism management.
 
-blog:[简书地址](http://www.jianshu.com/p/7742ea195bac)
+博客讲解：[简书地址](http://www.jianshu.com/p/7742ea195bac)
 
 ## 效果图<br>
 ![](https://github.com/nanchen2251/AppManager/blob/master/GIF.gif)
