@@ -39,7 +39,8 @@ UncaughtExceptionHandlerImpl.getInstance().init(this, BuildConfig.DEBUG, true, 0
 ```
 #### 3、你也可以禁止重启
 ```java
-// 禁止重启UncaughtExceptionHandlerImpl.getInstance().init(this,BuildConfig.DEBUG);
+// 禁止重启
+UncaughtExceptionHandlerImpl.getInstance().init(this,BuildConfig.DEBUG);
 ```
 
 ### 关于作者
