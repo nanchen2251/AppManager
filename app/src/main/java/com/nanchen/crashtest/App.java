@@ -17,5 +17,8 @@ public class App extends CrashApplication {
         super.onCreate();
         // 设置崩溃后自动重启 APP
         UncaughtExceptionHandlerImpl.getInstance().init(this, BuildConfig.DEBUG, true, 0, MainActivity.class);
+
+        // 禁止重启
+//        UncaughtExceptionHandlerImpl.getInstance().init(this,BuildConfig.DEBUG);
     }
 }
