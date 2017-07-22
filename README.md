@@ -32,9 +32,10 @@ dependencies {
 	        compile 'com.github.nanchen2251:AppManager:1.0.1'
 	}
 ```
-#### 2、在需要使用的地方使用<br>
+#### 2、在需要使用的地方使用(我们建议在 Application 中，并且继承库的 CrashApplication )<br>
 ```java
 // 设置崩溃后自动重启 APP
+// 参数依次为 上下文（建议是Application），是否是debug模式，是否崩溃后重启，重启延迟时间，重启的Activity
 UncaughtExceptionHandlerImpl.getInstance().init(this, BuildConfig.DEBUG, true, 0, MainActivity.class);
 ```
 #### 3、你也可以禁止重启
@@ -42,6 +43,8 @@ UncaughtExceptionHandlerImpl.getInstance().init(this, BuildConfig.DEBUG, true, 0
 // 禁止重启
 UncaughtExceptionHandlerImpl.getInstance().init(this,BuildConfig.DEBUG);
 ```
+
+#### 4、你可以通过查看库代码学习到更多
 
 ### 关于作者
     南尘<br>
