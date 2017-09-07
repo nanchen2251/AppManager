@@ -8,7 +8,7 @@ An elegant exit application and restart mechanism management.
 
 #### ⊙开源不易，希望给个star或者fork奖励
 #### ⊙拥抱开源：https://github.com/nanchen2251/
-#### ⊙交流群（拒绝无脑问）：118116509
+#### ⊙交流群（拒绝无脑问）：118116509 <a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=8764b119b3aeb121863fd0177f134db3948d17a7f9b551c3e3c0f903b561d3a1"><img border="0" src="http://pub.idqqimg.com/wpa/images/group.png" alt="Android 神探侧漏交流群" title="Android 神探侧漏交流群"></a>(点击图标即可加入)
 
 ## 特点
 - 支持优雅的退出应用
