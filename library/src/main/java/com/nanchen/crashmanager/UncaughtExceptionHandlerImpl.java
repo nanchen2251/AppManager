@@ -84,13 +84,13 @@ public class UncaughtExceptionHandlerImpl implements UncaughtExceptionHandler {
 
 
     /**
-     * @param context           上下文
-     * @param isDebug           是否是Debug模式
-     * @param isRestartApp      是否支持重启APP
-     * @param restartTime       延迟重启时间
-     * @param restartActivity   重启后跳转的 Activity，我们建议是 SplashActivity
+     * @param context         上下文
+     * @param isDebug         是否是Debug模式
+     * @param isRestartApp    是否支持重启APP
+     * @param restartTime     延迟重启时间
+     * @param restartActivity 重启后跳转的 Activity，我们建议是 SplashActivity
      */
-    public void init(Context context, boolean isDebug, boolean isRestartApp, long restartTime,Class restartActivity) {
+    public void init(Context context, boolean isDebug, boolean isRestartApp, long restartTime, Class restartActivity) {
         mIsRestartApp = isRestartApp;
         mRestartTime = restartTime;
         mRestartActivity = restartActivity;
@@ -131,8 +131,15 @@ public class UncaughtExceptionHandlerImpl implements UncaughtExceptionHandler {
                 PendingIntent restartIntent = PendingIntent.getActivity(
                         mContext.getApplicationContext(), 0, intent,
                         Intent.FLAG_ACTIVITY_NEW_TASK);
-                mAlarmManager.set(AlarmManager.RTC, System.currentTimeMillis() + mRestartTime,
-                        restartIntent); // 重启应用
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    //Android6.0以上，包含6.0
+                    mAlarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC, System.currentTimeMillis() + 1000, restartIntent); //解决Android6.0省电机制带来的不准时问题
+                } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+                    //Android4.4到Android6.0之间，包含4.4
+                    mAlarmManager.setExact(AlarmManager.RTC, System.currentTimeMillis() + 1000, restartIntent); // 解决set()在api19上不准时问题
+                } else {
+                    mAlarmManager.set(AlarmManager.RTC, System.currentTimeMillis() + 1000, restartIntent);
+                }
             }
             // 结束应用
             ((CrashApplication) mContext.getApplicationContext()).removeAllActivity();
